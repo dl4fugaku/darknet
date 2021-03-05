@@ -158,14 +158,14 @@ void gemm_cpu(int TA, int TB, int M, int N, int K, float ALPHA,
     //         C[i*ldc + j] *= BETA;
     //     }
     // }
-    const float * alpha = &ALPHA;
-    const float * beta = &BETA;
+    // const float * alpha = &ALPHA;
+    // const float * beta = &BETA;
 
     cblas_sgemm(CblasRowMajor,
                 (TA) ? CblasTrans : CblasNoTrans,
                 (TB) ? CblasTrans : CblasNoTrans,
-                M, N, K, alpha, *A, lda,
-                *B, ldb, beta, *C, ldc)
+                M, N, K, ALPHA, *A, lda,
+                *B, ldb, BETA, *C, ldc)
 }
 
 #ifdef GPU
